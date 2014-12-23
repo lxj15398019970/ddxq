@@ -1,7 +1,0 @@
-2014-12-23 19:25:32,779 INFO [org.mortbay.log]-2014-12-23 19:25:32,779 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
-2014-12-23 19:25:32,826 INFO [org.mortbay.log]-2014-12-23 19:25:32,826 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - jetty-6.1.26
-2014-12-23 19:25:33,516 INFO [/ddxq]-2014-12-23 19:25:33,516 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Set web app root system property: 'webapp.qxf' = [/Users/xjli/workspace-new/ddxq/src/main/webapp]
-2014-12-23 19:25:33,519 INFO [/ddxq]-2014-12-23 19:25:33,519 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Initializing log4j from [classpath:log4j.properties]
-2014-12-23 19:25:33,523 INFO [/ddxq]-2014-12-23 19:25:33,523 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Initializing Spring root WebApplicationContext
-2014-12-23 19:25:34,876 INFO [/ddxq]-2014-12-23 19:25:34,876 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Set web app root system property: 'webapp.qxf' = [/Users/xjli/workspace-new/ddxq/src/main/webapp]
-2014-12-23 19:25:34,928 INFO [org.mortbay.log]-2014-12-23 19:25:34,928 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Started SocketConnector@0.0.0.0:8087
