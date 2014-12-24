@@ -45,7 +45,7 @@
 
 	<bean id="mpSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="mpDataSource" />
-		<property name="mapperLocations" value="WEB-INF/sql/*Dao.xml" />
+		<property name="mapperLocations" value="classpath:/mapper/*DAO.xml" />
 		<property name="typeAliasesPackage" value="cn.ld.ddxq.model" />
 	</bean>
 

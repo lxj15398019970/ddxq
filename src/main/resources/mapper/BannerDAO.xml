@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ld.ddxq.dao.IBannerDAO">
+<!--
+insert
+update
+updateNull
+deleteById
+deleteByCondition
+deleteByProperty
+fetch
+findOne
+findList
+findAll
+queryPage
+like
+queryList
+queryOne
+count
+selectMaxId
+updateOrSave
+selectOne
+selectList
+-->
+    <sql id="Base_Column_List">
+        id,
+        title,
+        imageUrl,
+        createTime
+    </sql>
+    <insert id="insert" parameterType="Banner">
+        INSERT INTO ddxq_banner (
+        id,
+        title,
+        imageUrl,
+        createTime
+        ) VALUES (
+        #{id},
+        #{title},
+        #{imageUrl},
+        #{createTime}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="Banner">
+        UPDATE ddxq_banner
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title!=null">
+                title = #{title},
+            </if>
+            <if test="imageUrl!=null">
+                imageUrl = #{imageUrl},
+            </if>
+            <if test="createTime!=null">
+                createTime = #{createTime},
+            </if>
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateMap">
+        UPDATE ddxq_banner
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="map.title!=null">
+                title = #{map.title},
+            </if>
+            <if test="map.imageUrl!=null">
+                imageUrl = #{map.imageUrl},
+            </if>
+            <if test="map.createTime!=null">
+                createTime = #{map.createTime},
+            </if>
+        </trim>
+        WHERE
+        id = #{map.id}
+    </update>
+
+    <update id="updateByCondition">
+        UPDATE ddxq_banner
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="update.title!=null">
+                title = #{update.title},
+            </if>
+            <if test="update.imageUrl!=null">
+                imageUrl = #{update.imageUrl},
+            </if>
+            <if test="update.createTime!=null">
+                createTime = #{update.createTime},
+            </if>
+        </trim>
+
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.title!=null">
+                AND title = #{condition.title}
+            </if>
+            <if test="condition.imageUrl!=null">
+                AND imageUrl = #{condition.imageUrl}
+            </if>
+            <if test="condition.createTime!=null">
+                AND createTime = #{condition.createTime}
+            </if>
+        </trim>
+    </update>
+
+    <insert id="insertMap" >
+        INSERT INTO ddxq_banner (
+                id,
+                title,
+                imageUrl,
+                createTime
+        ) VALUES (
+                #{map.id},
+                #{map.title},
+                #{map.imageUrl},
+                #{map.createTime}
+        )
+    </insert>
+
+
+    <update id="updateNull" parameterType="Banner">
+        UPDATE ddxq_banner
+        <trim prefix="SET" suffixOverrides=",">
+            title = #{title},
+            imageUrl = #{imageUrl},
+            createTime = #{createTime},
+        </trim>
+        WHERE
+        id = #{id} 
+    </update>
+
+    <!-- 按Id删除 -->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM ddxq_banner
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </delete>
+
+
+    <delete id="deleteByCondition" parameterType="java.util.Map">
+        DELETE FROM ddxq_banner
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="title!=null">
+                AND title = #{title}
+            </if>
+            <if test="imageUrl!=null">
+                AND imageUrl = #{imageUrl}
+            </if>
+            <if test="createTime!=null">
+                AND createTime = #{createTime}
+            </if>
+        </trim>
+    </delete>
+
+    <delete id="deleteByProperty" parameterType="java.util.Map">
+        DELETE FROM ddxq_banner WHERE
+        ${property} = #{value}
+    </delete>
+
+    <select id="fetch" parameterType="java.lang.Long" resultType="Banner">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_banner
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </select>
+
+    <select id="findOne" parameterType="java.util.Map" resultType="Banner">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_banner WHERE
+        ${property} = #{value}
+        LIMIT 0,1
+    </select>
+
+    <select id="findList" parameterType="java.util.Map" resultType="Banner">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_banner WHERE
+        ${property} = #{value}
+    </select>
+
+    <select id="findAll" resultType="Banner">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_banner
+    </select>
+
+    <select id="queryPage" resultType="Banner">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_banner
+        <where>
+
+            <if test="condition.whereSql != null">
+                and id in (#{condition.whereSql})
+            </if>
+
+            <if test="condition.id!=null">
+                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+            </if>
+            <if test="condition.title!=null">
+                ${condition.groupOp}   title  ${condition.title.op}  #{condition.title.data}
+            </if>
+            <if test="condition.imageUrl!=null">
+                ${condition.groupOp}   imageUrl  ${condition.imageUrl.op}  #{condition.imageUrl.data}
+            </if>
+            <if test="condition.createTime!=null">
+                ${condition.groupOp}   createTime  ${condition.createTime.op}  #{condition.createTime.data}
+            </if>
+
+
+    </where>
+
+        <if test="offset != null">
+            limit ${offset}, ${rows}
+        </if>
+    </select>
+
+    <select id="like" parameterType="java.util.Map" resultType="Banner">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_banner
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id like CONCAT('%', #{id} , '%')
+            </if>
+            <if test="title!=null">
+                AND title like CONCAT('%', #{title} , '%')
+            </if>
+            <if test="imageUrl!=null">
+                AND imageUrl like CONCAT('%', #{imageUrl} , '%')
+            </if>
+            <if test="createTime!=null">
+                AND createTime like CONCAT('%', #{createTime} , '%')
+            </if>
+        </trim>
+    </select>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultType="Banner">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_banner
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.title!=null">
+                AND title = #{condition.title}
+            </if>
+            <if test="condition.imageUrl!=null">
+                AND imageUrl = #{condition.imageUrl}
+            </if>
+            <if test="condition.createTime!=null">
+                AND createTime = #{condition.createTime}
+            </if>
+        </trim>
+        ORDER BY ${orderBy} ${sortBy}
+    </select>
+
+    <select id="queryOne" parameterType="java.util.Map" resultType="Banner">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_banner
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="title!=null">
+                AND title = #{title}
+            </if>
+            <if test="imageUrl!=null">
+                AND imageUrl = #{imageUrl}
+            </if>
+            <if test="createTime!=null">
+                AND createTime = #{createTime}
+            </if>
+        </trim>
+        limit 0,1
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(id) FROM ddxq_banner
+       <where>
+           <if test="id!=null">
+               ${groupOp} id ${id.op}  #{id.data}
+           </if>
+           <if test="title!=null">
+               ${groupOp} title ${title.op}  #{title.data}
+           </if>
+           <if test="imageUrl!=null">
+               ${groupOp} imageUrl ${imageUrl.op}  #{imageUrl.data}
+           </if>
+           <if test="createTime!=null">
+               ${groupOp} createTime ${createTime.op}  #{createTime.data}
+           </if>
+
+       </where>
+
+    </select>
+
+    <select id="selectMaxId" resultType="java.lang.Long">
+        SELECT
+        MAX(id)
+        FROM ddxq_banner
+    </select>
+
+</mapper>
+

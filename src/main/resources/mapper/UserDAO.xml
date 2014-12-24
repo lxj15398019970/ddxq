@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ld.ddxq.dao.IUserDAO">
+<!--
+insert
+update
+updateNull
+deleteById
+deleteByCondition
+deleteByProperty
+fetch
+findOne
+findList
+findAll
+queryPage
+like
+queryList
+queryOne
+count
+selectMaxId
+updateOrSave
+selectOne
+selectList
+-->
+    <sql id="Base_Column_List">
+        id,
+        comunityId,
+        nickName,
+        headUrl,
+        userType
+    </sql>
+    <insert id="insert" parameterType="User">
+        INSERT INTO ddxq_user (
+        id,
+        comunityId,
+        nickName,
+        headUrl,
+        userType
+        ) VALUES (
+        #{id},
+        #{comunityId},
+        #{nickName},
+        #{headUrl},
+        #{userType}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="User">
+        UPDATE ddxq_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="comunityId!=null">
+                comunityId = #{comunityId},
+            </if>
+            <if test="nickName!=null">
+                nickName = #{nickName},
+            </if>
+            <if test="headUrl!=null">
+                headUrl = #{headUrl},
+            </if>
+            <if test="userType!=null">
+                userType = #{userType},
+            </if>
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateMap">
+        UPDATE ddxq_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="map.comunityId!=null">
+                comunityId = #{map.comunityId},
+            </if>
+            <if test="map.nickName!=null">
+                nickName = #{map.nickName},
+            </if>
+            <if test="map.headUrl!=null">
+                headUrl = #{map.headUrl},
+            </if>
+            <if test="map.userType!=null">
+                userType = #{map.userType},
+            </if>
+        </trim>
+        WHERE
+        id = #{map.id}
+    </update>
+
+    <update id="updateByCondition">
+        UPDATE ddxq_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="update.comunityId!=null">
+                comunityId = #{update.comunityId},
+            </if>
+            <if test="update.nickName!=null">
+                nickName = #{update.nickName},
+            </if>
+            <if test="update.headUrl!=null">
+                headUrl = #{update.headUrl},
+            </if>
+            <if test="update.userType!=null">
+                userType = #{update.userType},
+            </if>
+        </trim>
+
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.comunityId!=null">
+                AND comunityId = #{condition.comunityId}
+            </if>
+            <if test="condition.nickName!=null">
+                AND nickName = #{condition.nickName}
+            </if>
+            <if test="condition.headUrl!=null">
+                AND headUrl = #{condition.headUrl}
+            </if>
+            <if test="condition.userType!=null">
+                AND userType = #{condition.userType}
+            </if>
+        </trim>
+    </update>
+
+    <insert id="insertMap" >
+        INSERT INTO ddxq_user (
+                id,
+                comunityId,
+                nickName,
+                headUrl,
+                userType
+        ) VALUES (
+                #{map.id},
+                #{map.comunityId},
+                #{map.nickName},
+                #{map.headUrl},
+                #{map.userType}
+        )
+    </insert>
+
+
+    <update id="updateNull" parameterType="User">
+        UPDATE ddxq_user
+        <trim prefix="SET" suffixOverrides=",">
+            comunityId = #{comunityId},
+            nickName = #{nickName},
+            headUrl = #{headUrl},
+            userType = #{userType},
+        </trim>
+        WHERE
+        id = #{id} 
+    </update>
+
+    <!-- 按Id删除 -->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM ddxq_user
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </delete>
+
+
+    <delete id="deleteByCondition" parameterType="java.util.Map">
+        DELETE FROM ddxq_user
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="comunityId!=null">
+                AND comunityId = #{comunityId}
+            </if>
+            <if test="nickName!=null">
+                AND nickName = #{nickName}
+            </if>
+            <if test="headUrl!=null">
+                AND headUrl = #{headUrl}
+            </if>
+            <if test="userType!=null">
+                AND userType = #{userType}
+            </if>
+        </trim>
+    </delete>
+
+    <delete id="deleteByProperty" parameterType="java.util.Map">
+        DELETE FROM ddxq_user WHERE
+        ${property} = #{value}
+    </delete>
+
+    <select id="fetch" parameterType="java.lang.Long" resultType="User">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_user
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </select>
+
+    <select id="findOne" parameterType="java.util.Map" resultType="User">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_user WHERE
+        ${property} = #{value}
+        LIMIT 0,1
+    </select>
+
+    <select id="findList" parameterType="java.util.Map" resultType="User">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_user WHERE
+        ${property} = #{value}
+    </select>
+
+    <select id="findAll" resultType="User">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_user
+    </select>
+
+    <select id="queryPage" resultType="User">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_user
+        <where>
+
+            <if test="condition.whereSql != null">
+                and id in (#{condition.whereSql})
+            </if>
+
+            <if test="condition.id!=null">
+                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+            </if>
+            <if test="condition.comunityId!=null">
+                ${condition.groupOp}   comunityId  ${condition.comunityId.op}  #{condition.comunityId.data}
+            </if>
+            <if test="condition.nickName!=null">
+                ${condition.groupOp}   nickName  ${condition.nickName.op}  #{condition.nickName.data}
+            </if>
+            <if test="condition.headUrl!=null">
+                ${condition.groupOp}   headUrl  ${condition.headUrl.op}  #{condition.headUrl.data}
+            </if>
+            <if test="condition.userType!=null">
+                ${condition.groupOp}   userType  ${condition.userType.op}  #{condition.userType.data}
+            </if>
+
+
+    </where>
+
+        <if test="offset != null">
+            limit ${offset}, ${rows}
+        </if>
+    </select>
+
+    <select id="like" parameterType="java.util.Map" resultType="User">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_user
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id like CONCAT('%', #{id} , '%')
+            </if>
+            <if test="comunityId!=null">
+                AND comunityId like CONCAT('%', #{comunityId} , '%')
+            </if>
+            <if test="nickName!=null">
+                AND nickName like CONCAT('%', #{nickName} , '%')
+            </if>
+            <if test="headUrl!=null">
+                AND headUrl like CONCAT('%', #{headUrl} , '%')
+            </if>
+            <if test="userType!=null">
+                AND userType like CONCAT('%', #{userType} , '%')
+            </if>
+        </trim>
+    </select>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultType="User">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_user
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.comunityId!=null">
+                AND comunityId = #{condition.comunityId}
+            </if>
+            <if test="condition.nickName!=null">
+                AND nickName = #{condition.nickName}
+            </if>
+            <if test="condition.headUrl!=null">
+                AND headUrl = #{condition.headUrl}
+            </if>
+            <if test="condition.userType!=null">
+                AND userType = #{condition.userType}
+            </if>
+        </trim>
+        ORDER BY ${orderBy} ${sortBy}
+    </select>
+
+    <select id="queryOne" parameterType="java.util.Map" resultType="User">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_user
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="comunityId!=null">
+                AND comunityId = #{comunityId}
+            </if>
+            <if test="nickName!=null">
+                AND nickName = #{nickName}
+            </if>
+            <if test="headUrl!=null">
+                AND headUrl = #{headUrl}
+            </if>
+            <if test="userType!=null">
+                AND userType = #{userType}
+            </if>
+        </trim>
+        limit 0,1
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(id) FROM ddxq_user
+       <where>
+           <if test="id!=null">
+               ${groupOp} id ${id.op}  #{id.data}
+           </if>
+           <if test="comunityId!=null">
+               ${groupOp} comunityId ${comunityId.op}  #{comunityId.data}
+           </if>
+           <if test="nickName!=null">
+               ${groupOp} nickName ${nickName.op}  #{nickName.data}
+           </if>
+           <if test="headUrl!=null">
+               ${groupOp} headUrl ${headUrl.op}  #{headUrl.data}
+           </if>
+           <if test="userType!=null">
+               ${groupOp} userType ${userType.op}  #{userType.data}
+           </if>
+
+       </where>
+
+    </select>
+
+    <select id="selectMaxId" resultType="java.lang.Long">
+        SELECT
+        MAX(id)
+        FROM ddxq_user
+    </select>
+
+</mapper>
+
