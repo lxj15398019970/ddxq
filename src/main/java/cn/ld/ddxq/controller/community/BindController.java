@@ -23,6 +23,8 @@ public class BindController {
      */
     @RequestMapping(value = "input.shtml", method = RequestMethod.GET)
     public String bindInput() {
+
+        //绑定
         return "bind";
     }
 
