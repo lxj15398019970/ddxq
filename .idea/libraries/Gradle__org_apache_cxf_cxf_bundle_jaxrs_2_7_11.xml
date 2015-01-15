@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.cxf:cxf-bundle-jaxrs:2.7.11">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/wrapper/dists/gradle-2.0-all/7rd4e4rcg4riqi0j6j508m2lbk/gradle-2.0/caches/modules-2/files-2.1/org.apache.cxf/cxf-bundle-jaxrs/2.7.11/d9829680d7bd4ebee46f42ca6f4c8e71f9ed22ab/cxf-bundle-jaxrs-2.7.11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/wrapper/dists/gradle-2.0-all/7rd4e4rcg4riqi0j6j508m2lbk/gradle-2.0/caches/modules-2/files-2.1/org.apache.cxf/cxf-bundle-jaxrs/2.7.11/41b2654a1cfb40992681d7ed1a558d9c04fd0f34/cxf-bundle-jaxrs-2.7.11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
