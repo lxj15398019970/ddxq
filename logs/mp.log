@@ -125,3 +125,16 @@ Caused by: java.lang.ClassNotFoundException: org.apache.commons.fileupload.FileI
 2015-01-13 19:34:43,580 INFO [/ddxq]-2015-01-13 19:34:43,580 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Set web app root system property: 'webapp.ddxq' = [/Users/sfdeng/Documents/dengsf/ddxq/src/main/webapp]
 2015-01-13 19:34:43,641 INFO [org.mortbay.log]-2015-01-13 19:34:43,641 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Started SocketConnector@0.0.0.0:8087
 2015-01-13 19:34:50,574 INFO [/ddxq]-2015-01-13 19:34:50,574 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Initializing Spring FrameworkServlet 'Spring-Dispatcher'
+2015-01-15 12:44:43,773 INFO [org.mortbay.log]-2015-01-15 12:44:43,773 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2015-01-15 12:44:43,840 INFO [org.mortbay.log]-2015-01-15 12:44:43,840 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - jetty-6.1.26
+2015-01-15 12:44:44,640 INFO [/ddxq]-2015-01-15 12:44:44,640 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Set web app root system property: 'webapp.ddxq' = [/Users/sfdeng/Documents/dengsf/ddxq/src/main/webapp]
+2015-01-15 12:44:44,644 INFO [/ddxq]-2015-01-15 12:44:44,644 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Initializing log4j from [classpath:log4j.properties]
+2015-01-15 12:44:44,650 INFO [/ddxq]-2015-01-15 12:44:44,650 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Initializing Spring root WebApplicationContext
+2015-01-15 12:44:46,895 INFO [/ddxq]-2015-01-15 12:44:46,895 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Set web app root system property: 'webapp.ddxq' = [/Users/sfdeng/Documents/dengsf/ddxq/src/main/webapp]
+2015-01-15 12:44:46,957 INFO [org.mortbay.log]-2015-01-15 12:44:46,957 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Started SocketConnector@0.0.0.0:8087
+2015-01-15 12:46:10,554 INFO [/ddxq]-2015-01-15 12:46:10,554 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Initializing Spring FrameworkServlet 'Spring-Dispatcher'
+2015-01-15 20:04:21,160 INFO [org.mortbay.log]-2015-01-15 20:04:21,160 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Shutdown hook executing
+2015-01-15 20:04:21,163 INFO [org.mortbay.log]-2015-01-15 20:04:21,163 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Stopped SocketConnector@0.0.0.0:8087
+2015-01-15 20:04:21,164 INFO [/ddxq]-2015-01-15 20:04:21,164 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Destroying Spring FrameworkServlet 'Spring-Dispatcher'
+2015-01-15 20:04:21,173 INFO [/ddxq]-2015-01-15 20:04:21,173 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Closing Spring root WebApplicationContext
+2015-01-15 20:04:21,193 INFO [/ddxq]-2015-01-15 20:04:21,193 method:org.mortbay.log.Slf4jLog.info(Slf4jLog.java:67) - Shutting down log4j
