@@ -3,25 +3,44 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>绑定学校</title>
-    <!-- Bootstrap -->
-    <link href="${ctx}/static/sea-modules/bootstrap/3.3.0/css/bootstrap.min.css?v=${timestamp}"  rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="${ctx}/static/sea-modules/bootstrap/3.3.0/js/html5shiv.min.js?v=${timestamp}"></script>
-    <script src="${ctx}/static/sea-modules/bootstrap/3.3.0/js/respond.min.js?v=${timestamp}"></script>
-    <![endif]-->
-    <script src="${ctx}/static/sea-modules/seajs/seajs/2.1.0/sea.js?v=${timestamp}"></script>
-    <script src="${ctx}/static/sea-modules/seajs-config.js?v=${timestamp}"></script>
+    <title>title</title>
+    <%@include file="common/head.jsp"%>
 </head>
 <body>
-<h1></h1>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <script>
-    seajs.use("${ctx}/static/app/bind/bind")
+    seajs.use("${ctx}/static/src/js/bind")
 </script>
-
-
 </body>
 </html>

@@ -1,23 +1,29 @@
-module.exports = function(grunt) {
-
-    // Project configuration.
+module.exports = function (grunt) {
+    // 项目配置
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-            },
+            "my_target": {
+                "files": {
+                    'app/main.min.js': ['src/js/main.js'],
+                    'app/bind.min.js': ['src/js/bind.js']
+                }
+            }
+        },
+        combo: {
             build: {
-                src: 'src/<%= pkg.name %>.js',
-                dest: 'build/<%= pkg.name %>.min.js'
+                files: [{
+                    expand: true,
+                    cwd: 'sea-modules/external',
+                    src: '**/*.js',
+                    dest: 'sea-modules/external',
+                    ext: '.js'
+                }]
             }
         }
     });
-
-    // 加载包含 "uglify" 任务的插件。
     grunt.loadNpmTasks('grunt-contrib-uglify');
-
-    // 默认被执行的任务列表。
-    grunt.registerTask('default', ['uglify']);
-
-};
+    grunt.loadNpmTasks('grunt-cmd-combo');
+    // 默认任务
+    grunt.registerTask('default', ['uglify','combo']);
+}
