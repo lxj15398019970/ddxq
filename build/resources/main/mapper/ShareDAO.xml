@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ld.ddxq.dao.IShareDAO">
+<!--
+insert
+update
+updateNull
+deleteById
+deleteByCondition
+deleteByProperty
+fetch
+findOne
+findList
+findAll
+queryPage
+like
+queryList
+queryOne
+count
+selectMaxId
+updateOrSave
+selectOne
+selectList
+-->
+    <sql id="Base_Column_List">
+        id,
+        userId,
+        content,
+        comment,
+        zan,
+        createTime
+    </sql>
+    <insert id="insert" parameterType="Share">
+        INSERT INTO ddxq_share (
+        id,
+        userId,
+        content,
+        comment,
+        zan,
+        createTime
+        ) VALUES (
+        #{id},
+        #{userId},
+        #{content},
+        #{comment},
+        #{zan},
+        #{createTime}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="Share">
+        UPDATE ddxq_share
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId!=null">
+                userId = #{userId},
+            </if>
+            <if test="content!=null">
+                content = #{content},
+            </if>
+            <if test="comment!=null">
+                comment = #{comment},
+            </if>
+            <if test="zan!=null">
+                zan = #{zan},
+            </if>
+            <if test="createTime!=null">
+                createTime = #{createTime},
+            </if>
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateMap">
+        UPDATE ddxq_share
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="map.userId!=null">
+                userId = #{map.userId},
+            </if>
+            <if test="map.content!=null">
+                content = #{map.content},
+            </if>
+            <if test="map.comment!=null">
+                comment = #{map.comment},
+            </if>
+            <if test="map.zan!=null">
+                zan = #{map.zan},
+            </if>
+            <if test="map.createTime!=null">
+                createTime = #{map.createTime},
+            </if>
+        </trim>
+        WHERE
+        id = #{map.id}
+    </update>
+
+    <update id="updateByCondition">
+        UPDATE ddxq_share
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="update.userId!=null">
+                userId = #{update.userId},
+            </if>
+            <if test="update.content!=null">
+                content = #{update.content},
+            </if>
+            <if test="update.comment!=null">
+                comment = #{update.comment},
+            </if>
+            <if test="update.zan!=null">
+                zan = #{update.zan},
+            </if>
+            <if test="update.createTime!=null">
+                createTime = #{update.createTime},
+            </if>
+        </trim>
+
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.userId!=null">
+                AND userId = #{condition.userId}
+            </if>
+            <if test="condition.content!=null">
+                AND content = #{condition.content}
+            </if>
+            <if test="condition.comment!=null">
+                AND comment = #{condition.comment}
+            </if>
+            <if test="condition.zan!=null">
+                AND zan = #{condition.zan}
+            </if>
+            <if test="condition.createTime!=null">
+                AND createTime = #{condition.createTime}
+            </if>
+        </trim>
+    </update>
+
+    <insert id="insertMap" >
+        INSERT INTO ddxq_share (
+                id,
+                userId,
+                content,
+                comment,
+                zan,
+                createTime
+        ) VALUES (
+                #{map.id},
+                #{map.userId},
+                #{map.content},
+                #{map.comment},
+                #{map.zan},
+                #{map.createTime}
+        )
+    </insert>
+
+
+    <update id="updateNull" parameterType="Share">
+        UPDATE ddxq_share
+        <trim prefix="SET" suffixOverrides=",">
+            userId = #{userId},
+            content = #{content},
+            comment = #{comment},
+            zan = #{zan},
+            createTime = #{createTime},
+        </trim>
+        WHERE
+        id = #{id} 
+    </update>
+
+    <!-- 按Id删除 -->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM ddxq_share
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </delete>
+
+
+    <delete id="deleteByCondition" parameterType="java.util.Map">
+        DELETE FROM ddxq_share
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="userId!=null">
+                AND userId = #{userId}
+            </if>
+            <if test="content!=null">
+                AND content = #{content}
+            </if>
+            <if test="comment!=null">
+                AND comment = #{comment}
+            </if>
+            <if test="zan!=null">
+                AND zan = #{zan}
+            </if>
+            <if test="createTime!=null">
+                AND createTime = #{createTime}
+            </if>
+        </trim>
+    </delete>
+
+    <delete id="deleteByProperty" parameterType="java.util.Map">
+        DELETE FROM ddxq_share WHERE
+        ${property} = #{value}
+    </delete>
+
+    <select id="fetch" parameterType="java.lang.Long" resultType="Share">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_share
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </select>
+
+    <select id="findOne" parameterType="java.util.Map" resultType="Share">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_share WHERE
+        ${property} = #{value}
+        LIMIT 0,1
+    </select>
+
+    <select id="findList" parameterType="java.util.Map" resultType="Share">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_share WHERE
+        ${property} = #{value}
+    </select>
+
+    <select id="findAll" resultType="Share">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_share
+    </select>
+
+    <select id="queryPage" resultType="Share">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_share
+        <where>
+
+            <if test="condition.whereSql != null">
+                and id in (#{condition.whereSql})
+            </if>
+
+            <if test="condition.id!=null">
+                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+            </if>
+            <if test="condition.userId!=null">
+                ${condition.groupOp}   userId  ${condition.userId.op}  #{condition.userId.data}
+            </if>
+            <if test="condition.content!=null">
+                ${condition.groupOp}   content  ${condition.content.op}  #{condition.content.data}
+            </if>
+            <if test="condition.comment!=null">
+                ${condition.groupOp}   comment  ${condition.comment.op}  #{condition.comment.data}
+            </if>
+            <if test="condition.zan!=null">
+                ${condition.groupOp}   zan  ${condition.zan.op}  #{condition.zan.data}
+            </if>
+            <if test="condition.createTime!=null">
+                ${condition.groupOp}   createTime  ${condition.createTime.op}  #{condition.createTime.data}
+            </if>
+
+
+    </where>
+
+        <if test="offset != null">
+            limit ${offset}, ${rows}
+        </if>
+    </select>
+
+    <select id="like" parameterType="java.util.Map" resultType="Share">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_share
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id like CONCAT('%', #{id} , '%')
+            </if>
+            <if test="userId!=null">
+                AND userId like CONCAT('%', #{userId} , '%')
+            </if>
+            <if test="content!=null">
+                AND content like CONCAT('%', #{content} , '%')
+            </if>
+            <if test="comment!=null">
+                AND comment like CONCAT('%', #{comment} , '%')
+            </if>
+            <if test="zan!=null">
+                AND zan like CONCAT('%', #{zan} , '%')
+            </if>
+            <if test="createTime!=null">
+                AND createTime like CONCAT('%', #{createTime} , '%')
+            </if>
+        </trim>
+    </select>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultType="Share">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_share
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.userId!=null">
+                AND userId = #{condition.userId}
+            </if>
+            <if test="condition.content!=null">
+                AND content = #{condition.content}
+            </if>
+            <if test="condition.comment!=null">
+                AND comment = #{condition.comment}
+            </if>
+            <if test="condition.zan!=null">
+                AND zan = #{condition.zan}
+            </if>
+            <if test="condition.createTime!=null">
+                AND createTime = #{condition.createTime}
+            </if>
+        </trim>
+        ORDER BY ${orderBy} ${sortBy}
+    </select>
+
+    <select id="queryOne" parameterType="java.util.Map" resultType="Share">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ddxq_share
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="userId!=null">
+                AND userId = #{userId}
+            </if>
+            <if test="content!=null">
+                AND content = #{content}
+            </if>
+            <if test="comment!=null">
+                AND comment = #{comment}
+            </if>
+            <if test="zan!=null">
+                AND zan = #{zan}
+            </if>
+            <if test="createTime!=null">
+                AND createTime = #{createTime}
+            </if>
+        </trim>
+        limit 0,1
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(id) FROM ddxq_share
+       <where>
+           <if test="id!=null">
+               ${groupOp} id ${id.op}  #{id.data}
+           </if>
+           <if test="userId!=null">
+               ${groupOp} userId ${userId.op}  #{userId.data}
+           </if>
+           <if test="content!=null">
+               ${groupOp} content ${content.op}  #{content.data}
+           </if>
+           <if test="comment!=null">
+               ${groupOp} comment ${comment.op}  #{comment.data}
+           </if>
+           <if test="zan!=null">
+               ${groupOp} zan ${zan.op}  #{zan.data}
+           </if>
+           <if test="createTime!=null">
+               ${groupOp} createTime ${createTime.op}  #{createTime.data}
+           </if>
+
+       </where>
+
+    </select>
+
+    <select id="selectMaxId" resultType="java.lang.Long">
+        SELECT
+        MAX(id)
+        FROM ddxq_share
+    </select>
+
+</mapper>
+
