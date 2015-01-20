@@ -6,7 +6,7 @@ import org.mortbay.jetty.Server;
 /**
  * 使用Jetty运行调试Web应用, 在Console输入回车停止服务.
  */
-public class Starterver {
+public class StartDDserver {
 
     public static final int PORT = 8087;
     public static final String CONTEXT = "/ddxq";
