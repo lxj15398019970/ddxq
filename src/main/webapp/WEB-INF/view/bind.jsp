@@ -5,15 +5,6 @@
 <head>
     <title>绑定小区</title>
     <%@include file="common/head.jsp" %>
-
-    <style>
-        #chosen-select-box {
-            width: 300px;
-            margin: 10px;
-        }
-    </style>
-
-
 </head>
 <body>
 
@@ -89,7 +80,20 @@
             <label class="col-sm-2 control-label">头像选择</label>
 
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="head" placeholder="Password">
+                <div>
+                <input type="radio" name="image" value="0">
+                <img src="${ctx}/upload/1.png" width="50" height="50">
+                </div>
+                <div>
+                    <input type="radio" name="image" value="0">
+                    <img src="${ctx}/upload/1.png" width="50" height="50">
+                </div>
+                <div>
+                    <input type="radio" name="image" value="0">
+                    <img src="${ctx}/upload/1.png" width="50" height="50">
+                </div>
+
+
             </div>
         </div>
 
