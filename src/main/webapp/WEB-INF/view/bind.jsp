@@ -37,7 +37,7 @@
 
 <div class="container">
 
-    <form class="form-horizontal" role="form" style="margin-top: 20px">
+    <form class="form-horizontal" role="form" style="margin-top: 20px" action="${ctx}/bind/submit.shtml" method="POST">
         <div class="form-group">
             <label class="col-sm-2 control-label">绑定小区</label>
 
@@ -80,10 +80,11 @@
             <label class="col-sm-2 control-label">头像选择</label>
 
             <div class="col-sm-10">
-                <div>
-                <input type="radio" name="image" value="0">
-                <img src="${ctx}/upload/1.png" width="50" height="50">
-                </div>
+                <%--<div>--%>
+                <%--<input type="radio" name="image" value="0">--%>
+                <%--<img data-src="${ctx}/upload/1.png" alt="..." width="50" height="50">--%>
+
+                <%--</div>--%>
                 <div>
                     <input type="radio" name="image" value="0">
                     <img src="${ctx}/upload/1.png" width="50" height="50">
@@ -97,19 +98,15 @@
             </div>
         </div>
 
-
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary">提交</button>
+                <button type="submit" class="btn btn-primary">提交</button>
             </div>
         </div>
     </form>
 
 
 </div>
-
-
-
 
 
 <script>

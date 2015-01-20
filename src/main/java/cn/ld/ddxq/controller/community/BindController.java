@@ -64,16 +64,14 @@ public class BindController {
      * @return
      */
 
-    @ResponseBody
     @RequestMapping(value = "submit.shtml", method = RequestMethod.POST)
     public String submit(User user) {
-
 
 
         iUserService.add(user);
         String result = "绑定成功";
 
-        return result;
+        return "redirect:/home/input.shtml";
     }
 
 
