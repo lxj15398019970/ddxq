@@ -4,7 +4,9 @@ seajs.config({
     // 别名配置
     alias: {
         "jquery": "jquery/1.11.1/jquery",
-        "bootstrap": "bootstrap/3.3.0/js/bootstrap"
+        "aui": "amazeui/js/amazeui"
+        //"bootstrap": "bootstrap/3.3.0/js/bootstrap",
+        //"chosen": "jquery/1.11.1/chosen"
     },
     // 预先加载
     preload: ['jquery'],
