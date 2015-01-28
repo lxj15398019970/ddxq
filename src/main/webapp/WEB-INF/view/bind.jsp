@@ -20,11 +20,11 @@
         </a>
     </div>
     <h1 class="am-header-title">
-        <a href="#title-link" class="">Amaze UI</a>
+        <a href="#title-link" class="">绑定小区</a>
     </h1>
 </header>
 <div class="am-container am-margin-top-sm">
-    <form class="am-form">
+    <form class="am-form" action="${ctx}/bind/submit.shtml" method="POST">
         <div class="am-form-group">
             <label>邮件</label>
             <select>
@@ -61,7 +61,7 @@
                 <img class="am-circle am-u-sm-3 am-margin-bottom-sm" src="http://7jpqbr.com1.z0.glb.clouddn.com/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" width="50" height="50"/>
             </div>
         </div>
-        <button type="button" class="am-btn am-btn-primary am-btn-block">主色按钮</button>
+        <button type="submit" class="am-btn am-btn-primary am-btn-block">提交</button>
 
     </form>
 </div>

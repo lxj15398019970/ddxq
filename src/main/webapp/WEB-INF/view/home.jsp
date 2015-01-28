@@ -29,7 +29,7 @@
         </a>
     </div>
     <h1 class="am-header-title">
-        <a href="#title-link" class="">Amaze UI</a>
+        <a href="#title-link" class="">首页</a>
     </h1>
 </header>
 <div class="am-container">
