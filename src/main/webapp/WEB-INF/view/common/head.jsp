@@ -7,3 +7,7 @@
 <link href="${ctx}/static/sea-modules/external/amazeui/css/amazeui.css?v=${timestamp}"  rel="stylesheet">
 <script src="${ctx}/static/sea-modules/seajs/seajs/2.1.0/sea.js?v=${timestamp}"></script>
 <script src="${ctx}/static/sea-modules/seajs-config.js?v=${timestamp}"></script>
+
+<script src="${ctx}/static/sea-modules/external/jquery/1.11.1/jquery.min.js"></script>
+<script src="${ctx}/static/sea-modules/external/jquery/1.11.1/jquery.Jcrop.js"></script>
+<link rel="stylesheet" href="${ctx}/static/sea-modules/external/jquery/1.11.1/css/jquery.Jcrop.css" type="text/css" />
